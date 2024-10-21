@@ -12,6 +12,17 @@ CREATE TABLE Employee (
     status TEXT CHECK(status IN ('Active', 'Inactive')) DEFAULT 'Active'
 );
 
+-- Contact table
+CREATE TABLE Contact (
+    contact_id INTEGER PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    phone TEXT,
+    email TEXT,
+    title TEXT,
+    organization TEXT
+);
+
 -- Lead table
 CREATE TABLE Lead (
     lead_id INTEGER PRIMARY KEY,
@@ -28,17 +39,6 @@ CREATE TABLE Lead (
     FOREIGN KEY (contact_id) REFERENCES Contact(contact_id)
 );
 
--- Contact table
-CREATE TABLE Contact (
-    contact_id INTEGER PRIMARY KEY,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    phone TEXT,
-    email TEXT,
-    title TEXT,
-    organization TEXT
-);
-
 -- Customer table
 CREATE TABLE Customer (
     customer_id INTEGER PRIMARY KEY,
@@ -50,7 +50,7 @@ CREATE TABLE Customer (
     industry TEXT,
     type TEXT CHECK(type IN ('Direct Customer', 'ODM', 'OEM', 'Distributor', 'Ecosystem Partner')),
     status TEXT CHECK(status IN ('Active', 'Inactive', 'Pending Review')) DEFAULT 'Pending Review',
-    date_created DATE,
+    date_created DATE DEFAULT CURRENT_DATE,
     FOREIGN KEY (owner_id) REFERENCES Employee(employee_id),
     FOREIGN KEY (parent_entity_id) REFERENCES Customer(customer_id)
 );
@@ -75,7 +75,7 @@ CREATE TABLE Opportunity (
     close_date DATE,
     stage TEXT CHECK(stage IN ('Create', 'Develop', 'Propose', 'Closed-Won', 'Closed-Lost')) DEFAULT 'Create',
     est_revenue REAL,
-    date_created DATE,
+    date_created DATE DEFAULT CURRENT_DATE,
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
     FOREIGN KEY (sold_to_id) REFERENCES Customer(customer_id),
     FOREIGN KEY (owner_id) REFERENCES Employee(employee_id)
@@ -90,7 +90,7 @@ CREATE TABLE Quote (
     name TEXT NOT NULL,
     content TEXT,
     status TEXT CHECK(status IN ('Draft', 'Pending Review', 'Approved', 'Rejected', 'Canceled')) DEFAULT 'Draft',
-    created_date DATE,
+    created_date DATE DEFAULT CURRENT_DATE,
     approved_date DATE,
     FOREIGN KEY (opportunity_id) REFERENCES Opportunity(opportunity_id),
     FOREIGN KEY (bill_to_id) REFERENCES Customer(customer_id),
@@ -102,11 +102,11 @@ CREATE TABLE Screening_Record (
     screening_record_id INTEGER PRIMARY KEY,
     modified_by_id INTEGER,
     customer_id INTEGER,
-    issue_type TEXT,
+    issue_type TEXT CHECK(issue_type IN ('Finance', 'Sanction', 'Legal')),
     status TEXT,
     source TEXT,
     pending_action TEXT,
-    date_created DATE,
+    date_created DATE DEFAULT CURRENT_DATE,
     date_updated DATE,
     FOREIGN KEY (modified_by_id) REFERENCES Employee(employee_id),
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
