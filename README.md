@@ -47,7 +47,7 @@ This project uses SQLite as the database. To use the database, clone this reposi
    sqlite3 database.db < data.sql
    ```
 
-To run queries on the database, use the following command:
+To run queries on the database, use the following command. Change the number in the query file name to run different queries:
 
 ```bash
    sqlite3 database.db < query1.sql
