@@ -1,0 +1,58 @@
+# Enhanced Customer Relationship Management System
+
+This project creates a Customer Relationship Management (CRM) system for managing enterprise customers. In addtion, it incorporates risk control mechanism to ensure all parties of a transaction are screened for potential risks.
+
+<!-- The system is built using Node.js and Express.js, and uses [database name] as the database. -->
+
+## Conceptual Model
+
+UML Class Diagram
+![UML Class Diagram](diagrams/uml.png)
+
+## Logical Model
+
+Entity Relation Diagram
+![Entity Relation Diagram](diagrams/erd.png)
+
+## Schema
+
+Refers to the database schema in the [schema.pdf](schema.pdf) file.
+
+<!-- ## How to run it
+
+- Requires installation of node, express, [database name]
+
+```
+npm install
+npm start
+```
+
+## How to use it
+
+Go to http://localhost:3000 and [do something] -->
+
+## Database
+
+This project uses SQLite as the database. To use the database, clone this repository, navigate to the queries directory, and run the following commands in the terminal:
+
+1. Initialize a new database with the schema:
+
+   ```bash
+   sqlite3 database.db < schema.sql
+   ```
+
+2. Populate the database:
+
+   ```bash
+   sqlite3 database.db < data.sql
+   ```
+
+To run queries on the database, use the following command:
+
+```bash
+   sqlite3 database.db < query1.sql
+```
+
+---
+
+_This project was developed as part of the course CS 5200 Database Management Systems taught by Professor John Alexis Guerra Gomez at Northeastern University (Oakland)._
