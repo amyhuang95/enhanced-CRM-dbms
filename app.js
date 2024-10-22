@@ -1,21 +1,21 @@
 import express from 'express';
-import morgan from 'morgan';
+import { homeRouter } from './routes/home.js';
+import { employeeRouter } from './routes/employee/index.js';
 
+// Set up the express app
 const app = express();
-const port = process.env.PORT || 3000;
 
-// Middleware for logging
-app.use(morgan('dev'));
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+// Add static files
+app.use(express.static('public'));
 
-// Sample route
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+// Add routes
+app.use(homeRouter);
+app.use(employeeRouter);
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(3000, () => {
+  console.log('Listening on port 3000');
 });
