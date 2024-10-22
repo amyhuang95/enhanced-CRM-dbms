@@ -1,6 +1,7 @@
 import express from 'express';
 import { homeRouter } from './routes/home.js';
 import { employeeRouter } from './routes/employee/index.js';
+import { addEmployeeRouter } from './routes/employee/add.js';
 
 // Set up the express app
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.static('public'));
 // Add routes
 app.use(homeRouter);
 app.use(employeeRouter);
+app.use(addEmployeeRouter);
 
 // Start the server
 app.listen(3000, () => {
