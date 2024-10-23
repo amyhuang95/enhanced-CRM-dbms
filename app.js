@@ -1,8 +1,17 @@
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import createError from 'http-errors';
 import { homeRouter } from './routes/home.js';
 import { employeeRouter } from './routes/employee/index.js';
 import { addEmployeeRouter } from './routes/employee/add.js';
 import { updateEmployeeRouter } from './routes/employee/update.js';
+
+// Resolve file and directory paths
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Set up the express app
 const app = express();
@@ -10,8 +19,15 @@ const app = express();
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 
-// Add static files
-app.use(express.static('public'));
+// Set up view directory
+app.set('views', path.join(__dirname, 'views'));
+
+// Middleware
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Add routes
 app.use(homeRouter);
@@ -19,7 +35,20 @@ app.use(employeeRouter);
 app.use(addEmployeeRouter);
 app.use(updateEmployeeRouter);
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+// Catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(createError(404));
 });
+
+// Error handler
+app.use((err, req, res) => {
+  // Set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // Render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+export default app;
