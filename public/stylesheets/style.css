@@ -12,3 +12,23 @@ body {
 .card:hover a, .card a:focus {
   opacity:  100;
 }
+
+/* Grid form for employee form */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.form-grid > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid > .btn-div {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: right; */
+  align-items: center;
+  gap: 10px;
+}
