@@ -6,7 +6,7 @@
     <%- include("../templates/navBar.ejs") %>
 
     <div class="container">
-      <h1>Edit Reference</h1>
+      <h1>Edit Employee</h1>
 
 
       <% if (msg) { %>
@@ -15,9 +15,9 @@
         </div>
       <% } %>
 
-      <%- include("../components/formEditReference.ejs", { ref }) %>
+      <%- include("../components/formEditEmployee.ejs", { emp }) %>
 
-      <%- include("../components/authorList.ejs", { authors }) %>
+      <%- include("../components/customerList.ejs", { customers }) %>
 
 
     </div>

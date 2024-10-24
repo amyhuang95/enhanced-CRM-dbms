@@ -1,18 +1,14 @@
-<h2>Reference</h2>
+<h2>Employee</h2>
 
-<form
-  action=" <%= '/references/' + ref.reference_id + '/edit' %>"
-  method="POST"
->
-
+<form action=" <%= '/employees/' + emp.employee_id + '/edit' %>" method="POST">
   <div>
     <label class="form-label">
-      Reference ID:
+      Employee ID:
       <input
         class="form-control"
         type="text"
-        name="reference_id"
-        value="<%= ref.reference_id %>"
+        name="employee_id"
+        value="<%= emp.employee_id %>"
         disabled
       />
     </label>
@@ -24,19 +20,19 @@
         class="form-control"
         type="text"
         name="title"
-        value="<%= ref.title %>"
+        value="<%= emp.title %>"
       />
     </label>
   </div>
 
   <div>
     <label class="form-label">
-      Published On:
+      Hired On:
       <input
         class="form-control"
         type="text"
-        name="published_on"
-        value="<%= ref.published_on %>"
+        name="hired_date"
+        value="<%= emp.hired_date %>"
       />
     </label>
   </div>
@@ -44,7 +40,7 @@
   <button type="submit" class="btn btn-primary">Edit</button>
   <a
     class="btn btn-danger"
-    href="<%= '/references/' + ref.reference_id + '/delete' %>"
+    href="<%= '/employees/' + emp.employee_id + '/delete' %>"
     >Delete</a
   >
 </form>

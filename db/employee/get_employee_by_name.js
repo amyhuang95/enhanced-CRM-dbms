@@ -5,7 +5,7 @@ import { getDBConnection } from '../db_connector.js';
  * @param {string} query the name query to search for employees.
  * @param {number} page  the page number for pagination.
  * @param {number} pageSize  the number of employees to return per page.
- * @returns {Promise<Array>} a promise that resolves to an array of employee objects.
+ * @returns {Promise<Array>} an array of employee objects
  */
 export async function getEmployeeByName(query, page, pageSize) {
   console.log('get employee by name', query);

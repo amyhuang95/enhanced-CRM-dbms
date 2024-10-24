@@ -3,7 +3,7 @@ import { getDBConnection } from '../db_connector.js';
 /**
  * Function to get the count of employees by name from the database
  * @param {string} query the name query to search for employees.
- * @returns {Promise<number>} a promise that resolves to the number of employees.
+ * @returns {Promise<number>} number of employees
  */
 export async function getEmployeeCount(query) {
   console.log('get employee count', query);

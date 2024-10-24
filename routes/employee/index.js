@@ -3,6 +3,9 @@ import * as db from '../../db/index.js';
 
 const router = express.Router();
 
+/**
+ * GET all employees page based on query
+ */
 router.get('/employees', async (req, res, next) => {
   const query = req.query.q || '';
   const page = +req.query.page || 1;
