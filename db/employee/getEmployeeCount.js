@@ -21,9 +21,9 @@ export async function getEmployeeCount(query) {
 
   try {
     const stmt = await db.prepare(sql);
-    const result = await stmt.get(params).count;
+    const result = await stmt.get(params);
     await stmt.finalize();
-    return result;
+    return result.count;
   } catch (error) {
     console.error('Error fetching employee count:', error);
     throw error;
