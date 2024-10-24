@@ -4,7 +4,7 @@ const router = express.Router();
 
 // GET home page
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Home' });
+  res.render('pages/root', { title: 'Home' });
 });
 
-export { router as homeRouter };
+export { router as rootRouter };

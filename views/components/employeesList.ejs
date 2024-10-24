@@ -6,8 +6,8 @@
       <div class="card p-1">
         <h5 class="card-title"><%= emp.first_name %> <%= emp.last_name %></h5>
         <div class="card-text">
-          <div><%= emp.hired_date %></div>
-          <div><%= emp.title %></div>
+          <div>Hired on: <%= emp.hired_date %></div>
+          <div>Title: <%= emp.title %></div>
 
           <div>
             <a class="btn btn-outline-primary" href="<%= '/employees/' + emp.employee_id + '/edit' %>">Edit</a>

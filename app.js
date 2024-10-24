@@ -4,11 +4,11 @@ import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import createError from 'http-errors';
-import { homeRouter } from './routes/home.js';
 import { employeeRouter } from './routes/employee/index.js';
 import { addEmployeeRouter } from './routes/employee/add.js';
 import { updateEmployeeRouter } from './routes/employee/update.js';
 import { showEmployeeRouter } from './routes/employee/show.js';
+import { rootRouter } from './routes/root.js';
 
 // Resolve file and directory paths
 const __filename = fileURLToPath(import.meta.url);
@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 
 // Add routes
-app.use(homeRouter);
+app.use(rootRouter);
 app.use(employeeRouter);
 app.use(showEmployeeRouter);
 app.use(addEmployeeRouter);

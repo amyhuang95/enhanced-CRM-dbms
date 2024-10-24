@@ -15,7 +15,7 @@ router.get('/employees', async (req, res, next) => {
   try {
     const total = await db.getEmployeeCount(query);
     const employees = await db.getEmployeeByName(query, page, pageSize);
-    res.render('./pages/index', {
+    res.render('./pages/employee/index', {
       employees,
       query,
       msg,

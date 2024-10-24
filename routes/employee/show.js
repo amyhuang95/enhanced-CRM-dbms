@@ -19,7 +19,7 @@ router.get('/employees/:employee_id/edit', async (req, res, next) => {
       msg,
     });
 
-    res.render('./pages/editEmployee', {
+    res.render('./pages/employee/edit', {
       emp,
       customers,
       msg,
