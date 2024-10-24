@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/employees', async (req, res, next) => {
   const query = req.query.q || '';
   const page = +req.query.page || 1;
-  const pageSize = +req.query.pageSize || 24;
+  const pageSize = +req.query.pageSize || 12;
   const msg = req.query.msg || null;
 
   try {
