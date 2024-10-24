@@ -1,4 +1,4 @@
-import { getDBConnection } from '../db_connector.js';
+import { getDBConnection } from '../dbConnector.js';
 
 /**
  * Function to get a list of customers by owner id

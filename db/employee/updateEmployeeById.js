@@ -1,4 +1,4 @@
-import { getDBConnection } from '../db_connector.js';
+import { getDBConnection } from '../dbConnector.js';
 
 /**
  * Function to update an employee by id in the database
