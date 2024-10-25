@@ -10,8 +10,8 @@ export async function addCustomer(customer) {
   const db = await getDBConnection();
 
   const sql = `
-    INSERT INTO customer (owner_id, parent_entity_id, legal_entity_name, country, address, industry, type, status, date_created)
-    VALUES (@owner_id, @parent_entity_id, @legal_entity_name, @country, @address, @industry, @type, @status, @date_created);`;
+    INSERT INTO customer (owner_id, parent_entity_id, legal_entity_name, country, address, industry, type, status)
+    VALUES (@owner_id, @parent_entity_id, @legal_entity_name, @country, @address, @industry, @type, @status);`;
 
   const params = {
     '@owner_id': customer.owner_id,
@@ -22,7 +22,6 @@ export async function addCustomer(customer) {
     '@industry': customer.industry,
     '@type': customer.type,
     '@status': customer.status,
-    '@date_created': customer.date_created,
   };
 
   try {
