@@ -34,7 +34,8 @@ router.get('/customers/:customer_id/edit', async (req, res, next) => {
   const customer_id = req.params.customer_id;
   const msg = req.query.msg || null;
   try {
-    let customer = await db.getCustomerById(customer_id);
+    const customer = await db.getCustomerById(customer_id);
+    const accountManagers = await db.getSalesEmployee();
     // let customers = await db.getCustomerByOwnerId(employee_id); // get all opptys for this customer
 
     console.log('customer ', {
@@ -45,6 +46,7 @@ router.get('/customers/:customer_id/edit', async (req, res, next) => {
 
     res.render('./pages/customer/edit', {
       customer,
+      accountManagers,
       // opptys,
       msg,
     });
@@ -75,6 +77,7 @@ router.post('/addCustomer', async (req, res, next) => {
 router.post('/customers/:customer_id/edit', async (req, res, next) => {
   const customer_id = req.params.customer_id;
   const customer = req.body;
+  console.log('update body', customer);
 
   try {
     const updateResult = await db.updateCustomerById(customer_id, customer);
@@ -84,6 +87,27 @@ router.post('/customers/:customer_id/edit', async (req, res, next) => {
       res.redirect('/customers/?msg=Updated');
     } else {
       res.redirect('/customers/?msg=Error Updating');
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * POST request to update owner id for a customer
+ */
+router.post('/customers/:customer_id/updateOwner', async (req, res, next) => {
+  const customer_id = req.params.customer_id;
+  const owner_id = req.body.owner_id;
+
+  try {
+    const updateResult = await db.updateOwnerById(customer_id, owner_id);
+    console.log('update', updateResult);
+
+    if (updateResult && updateResult.changes === 1) {
+      res.redirect(`/customers/${customer_id}/edit?msg=Owner Updated`);
+    } else {
+      res.redirect(`/customers/${customer_id}/edit?msg=Error Updating Owner`);
     }
   } catch (err) {
     next(err);
