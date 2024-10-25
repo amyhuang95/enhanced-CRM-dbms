@@ -28,7 +28,7 @@ router.get('/customers', async (req, res, next) => {
 });
 
 /**
- * GET single customer based on employee id
+ * GET single customer based on customer id
  */
 router.get('/customers/:customer_id/edit', async (req, res, next) => {
   const customer_id = req.params.customer_id;
@@ -54,38 +54,36 @@ router.get('/customers/:customer_id/edit', async (req, res, next) => {
 });
 
 /**
- * POST request to add an employee
+ * POST request to add a new customer
  */
-router.post('/addEmployee', async (req, res, next) => {
-  const emp = req.body;
+router.post('/addCustomer', async (req, res, next) => {
+  const customer = req.body;
 
   try {
-    const addEmp = await db.addEmployee(emp);
-
-    console.log('Added', addEmp);
-    res.redirect('/employees/?msg=Employee Added');
+    const addCustomer = await db.addCustomer(customer);
+    console.log('Added', addCustomer);
+    res.redirect('/customers/?msg=Customer Added');
   } catch (err) {
-    console.log('Error adding employee', err);
+    console.log('Error adding customer', err);
     next(err);
   }
 });
 
 /**
- * POST to update an employee by id
+ * POST to update a customer by id
  */
-router.post('/employees/:employee_id/edit', async (req, res, next) => {
-  const employee_id = req.params.employee_id;
-  const emp = req.body;
-  console.log(emp);
+router.post('/customers/:customer_id/edit', async (req, res, next) => {
+  const customer_id = req.params.customer_id;
+  const customer = req.body;
 
   try {
-    const updateResult = await db.updateEmployeeById(employee_id, emp);
+    const updateResult = await db.updateCustomerById(customer_id, customer);
     console.log('update', updateResult);
 
     if (updateResult && updateResult.changes === 1) {
-      res.redirect('/employees/?msg=Updated');
+      res.redirect('/customers/?msg=Updated');
     } else {
-      res.redirect('/employees/?msg=Error Updating');
+      res.redirect('/customers/?msg=Error Updating');
     }
   } catch (err) {
     next(err);
@@ -93,19 +91,19 @@ router.post('/employees/:employee_id/edit', async (req, res, next) => {
 });
 
 /**
- * GET request to delete an employee by id
+ * GET request to delete a customer by id
  */
-router.get('/employees/:employee_id/delete', async (req, res, next) => {
-  const employee_id = req.params.employee_id;
+router.get('/customers/:customer_id/delete', async (req, res, next) => {
+  const customer_id = req.params.customer_id;
 
   try {
-    let deleteResult = await db.deleteEmployeeById(employee_id);
+    const deleteResult = await db.deleteCustomerById(customer_id);
     console.log('delete', deleteResult);
 
     if (deleteResult && deleteResult.changes === 1) {
-      res.redirect('/employees/?msg=Deleted');
+      res.redirect('/customers/?msg=Deleted');
     } else {
-      res.redirect('/employees/?msg=Error Deleting');
+      res.redirect('/customers/?msg=Error Deleting');
     }
   } catch (err) {
     next(err);
