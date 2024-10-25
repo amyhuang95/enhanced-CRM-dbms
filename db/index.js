@@ -11,3 +11,4 @@ export * from './customer/getCustomerCount.js';
 export * from './customer/addCustomer.js';
 export * from './customer/updateCustomerById.js';
 export * from './customer/deleteCustomerById.js';
+export * from './customer/getCustomerByName.js';

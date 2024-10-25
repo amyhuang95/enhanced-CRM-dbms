@@ -4,8 +4,9 @@ import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import createError from 'http-errors';
-import { employeeRouter } from './routes/employee/index.js';
 import { rootRouter } from './routes/root.js';
+import { employeeRouter } from './routes/employee.js';
+import { customerRouter } from './routes/customer.js';
 
 // Resolve file and directory paths
 const __filename = fileURLToPath(import.meta.url);
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 // Add routes
 app.use(rootRouter);
 app.use(employeeRouter);
+app.use(customerRouter);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,12 +1,12 @@
 <h2>Customers:</h2>
+<% if (customers.length > 0) { %>
 <ul>
   <% for (let c of customers) { %>
   <li>
     <a href="<%= '/customers/' + c.customer_id + '/edit'  %>"><%= c.legal_entity_name %></a>
-    <a href="<%= '/employees/' + emp.employee_id + '/removeCustomer/' + c.customer_id   %>">❌</a>
   </li>
   <% } %>
 </ul>
-
-
-<%- include("../components/formAddCustomer.ejs", { emp }) %>
+<% } else { %>
+<p>No customers</p>
+<% } %>

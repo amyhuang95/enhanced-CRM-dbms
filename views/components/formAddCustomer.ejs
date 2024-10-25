@@ -1,24 +1,61 @@
-<h3>Add Customer</h3>
-<form
-  action="<%= '/employees/' + emp.employee_id + '/addCustomer'  %>"
-  method="POST"
->
+<h2>Add an Employee</h2>
+<form action="/addCustomer" method="POST">
   <div>
-    <input
-      hidden
-      type="text"
-      class="form-control"
-      name="employee_id"
-      value="<%= emp.employee_id %>"
-    />
+    <label class="form-label">
+      First Name:
+      <input class="form-control" type="text" name="first_name" />
+    </label>
   </div>
 
   <div>
     <label class="form-label">
-      Customer ID:
-      <input type="text" class="form-control" name="customer_id" />
+      Legal Entity Name:
+      <input class="form-control" type="text" name="legal_entity_name" />
+    </label>
+  </div>
+  <div>
+    <label class="form-label">
+      Parent Entity ID:
+      <input class="form-control" type="text" name="parent_entity_id" />
+    </label>
+  </div>
+  <div>
+    <label class="form-label">
+      Owner ID:
+      <input class="form-control" type="text" name="owner_id" />
+    </label>
+  </div>
+  <div>
+    <label class="form-label">
+      Country:
+      <input class="form-control" type="text" name="country" />
+    </label>
+  </div>
+  <div>
+    <label class="form-label">
+      Address:
+      <input class="form-control" type="text" name="address" />
+    </label>
+  </div>
+  <div>
+    <label class="form-label">
+      Industry:
+      <input class="form-control" type="text" name="industry" />
+    </label>
+  </div>
+  <div>
+    <label class="form-label">
+      Type:
+      <select class="form-control" name="type">
+        <option value="" disabled selected>Select</option>
+        <option value="Direct Customer">Direct Customer</option>
+        <option value="ODM">ODM</option>
+        <option value="OEM">OEM</option>
+        <option value="Distributor">Distributor</option>
+        <option value="Ecosystem Partner">Ecosystem Partner</option>
+      </select>
     </label>
   </div>
 
-  <button type="submit" class="btn btn-outline-primary">Add Customer</button>
+  <button class="btn btn-primary" type="submit">Create</button>
 </form>

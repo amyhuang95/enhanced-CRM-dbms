@@ -4,19 +4,19 @@ import * as db from '../db/index.js';
 const router = express.Router();
 
 /**
- * GET all employees page based on query
+ * GET all customers based on query
  */
-router.get('/employees', async (req, res, next) => {
+router.get('/customers', async (req, res, next) => {
   const query = req.query.q || '';
   const page = +req.query.page || 1;
   const pageSize = +req.query.pageSize || 12;
   const msg = req.query.msg || null;
 
   try {
-    const total = await db.getEmployeeCount(query);
-    const employees = await db.getEmployeeByName(query, page, pageSize);
-    res.render('./pages/employee/index', {
-      employees,
+    const total = await db.getCustomerCount(query);
+    const customers = await db.getCustomerByName(query, page, pageSize);
+    res.render('./pages/customer/index', {
+      customers,
       query,
       msg,
       currentPage: page,
@@ -28,24 +28,24 @@ router.get('/employees', async (req, res, next) => {
 });
 
 /**
- * GET single employee based on employee id
+ * GET single customer based on employee id
  */
-router.get('/employees/:employee_id/edit', async (req, res, next) => {
-  const employee_id = req.params.employee_id;
+router.get('/customers/:customer_id/edit', async (req, res, next) => {
+  const customer_id = req.params.customer_id;
   const msg = req.query.msg || null;
   try {
-    let emp = await db.getEmployeeById(employee_id);
-    let customers = await db.getCustomerByOwnerId(employee_id);
+    let customer = await db.getCustomerById(customer_id);
+    // let customers = await db.getCustomerByOwnerId(employee_id); // get all opptys for this customer
 
-    console.log('employee ', {
-      emp,
-      customers,
+    console.log('customer ', {
+      customer,
+      // opptys,
       msg,
     });
 
-    res.render('./pages/employee/edit', {
-      emp,
-      customers,
+    res.render('./pages/customer/edit', {
+      customer,
+      // opptys,
       msg,
     });
   } catch (err) {
@@ -112,4 +112,4 @@ router.get('/employees/:employee_id/delete', async (req, res, next) => {
   }
 });
 
-export { router as employeeRouter };
+export { router as customerRouter };
