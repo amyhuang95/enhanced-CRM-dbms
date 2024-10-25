@@ -15,8 +15,6 @@ export async function updateCustomerById(customer_id, customer) {
       UPDATE customer
       SET
         legal_entity_name = @legal_entity_name,
-        owner_id = @owner_id,
-        parent_entity_id = @parent_entity_id,
         country = @country,
         address = @address,
         industry = @industry,
@@ -29,8 +27,6 @@ export async function updateCustomerById(customer_id, customer) {
 
   const params = {
     '@legal_entity_name': customer.legal_entity_name,
-    '@owner_id': customer.owner_id,
-    '@parent_entity_id': customer,
     '@country': customer.country,
     '@address': customer.address,
     '@industry': customer.industry,
