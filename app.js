@@ -5,11 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import createError from 'http-errors';
 import { employeeRouter } from './routes/employee/index.js';
-import { addEmployeeRouter } from './routes/employee/add.js';
-import { updateEmployeeRouter } from './routes/employee/update.js';
-import { showEmployeeRouter } from './routes/employee/show.js';
 import { rootRouter } from './routes/root.js';
-import { deleteEmployeeRouter } from './routes/employee/delete.js';
 
 // Resolve file and directory paths
 const __filename = fileURLToPath(import.meta.url);
@@ -34,10 +30,6 @@ app.use(express.static(path.join(__dirname, '/public')));
 // Add routes
 app.use(rootRouter);
 app.use(employeeRouter);
-app.use(showEmployeeRouter);
-app.use(updateEmployeeRouter);
-app.use(deleteEmployeeRouter);
-app.use(addEmployeeRouter);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
