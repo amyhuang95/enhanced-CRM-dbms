@@ -1,0 +1,33 @@
+<h3>Update Account Manager</h3>
+<form
+  action="<%= '/customers/' + customer.customer_id + '/updateOwner'  %>"
+  method="POST"
+>
+  <div>
+    <input
+      hidden
+      type="text"
+      class="form-control"
+      name="customer_id"
+      value="<%= customer.customer_id %>"
+    />
+  </div>
+
+  <div>
+    <label class="form-label">
+    Account Manager (ID):
+    <input
+      class="form-control"
+      type="text"
+      name="owner_id"
+      list="owner_names"/>
+      <datalist id="owner_names">
+      <% accountManagers.forEach(function(mgr) { %>
+        <option value="<%= mgr.id %>"><%= mgr.name %></option>
+      <% }); %>
+      </datalist>
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-outline-primary">Update</button>
+</form>
