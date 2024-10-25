@@ -42,7 +42,7 @@ CREATE TABLE Lead (
 -- Customer table
 CREATE TABLE Customer (
     customer_id INTEGER PRIMARY KEY,
-    owner_id INTEGER,
+    owner_id INTEGER NOT NULL,
     parent_entity_id INTEGER,
     legal_entity_name TEXT NOT NULL,
     country TEXT,
