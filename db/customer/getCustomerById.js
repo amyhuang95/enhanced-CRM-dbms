@@ -10,9 +10,13 @@ export async function getCustomerById(customer_id) {
   const db = await getDBConnection();
 
   const sql = `
-    SELECT *
-    FROM customer
-    WHERE customer_id = @customer_id;
+    SELECT c.*, c2.legal_entity_name AS parent_entity_name ,e.first_name || ' ' || e.last_name AS owner_name
+    FROM customer c
+    LEFT JOIN employee e
+        ON c.owner_id = e.employee_id
+    LEFT JOIN customer c2
+        ON c.parent_entity_id = c2.customer_id
+    WHERE c.customer_id = @customer_id;
     `;
 
   const params = {
