@@ -6,7 +6,7 @@ import { getDBConnection } from '../dbConnector.js';
  * @returns {Promise<Object>} an employee object
  */
 export async function getEmployeeById(employee_id) {
-  console.log('get employee by id', employee_id);
+  console.log('[DB] getEmployeeById', employee_id);
   const db = await getDBConnection();
 
   const sql = `

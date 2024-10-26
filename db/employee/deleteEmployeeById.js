@@ -6,7 +6,7 @@ import { getDBConnection } from '../dbConnector.js';
  * @returns {Promise<Object>} the result of the delete operation
  */
 export async function deleteEmployeeById(employee_id) {
-  console.log('delete employee by id', employee_id);
+  console.log('[DB] deleteEmployeeById', employee_id);
 
   const db = await getDBConnection();
 

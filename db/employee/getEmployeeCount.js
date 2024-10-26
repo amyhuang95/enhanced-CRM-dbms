@@ -6,7 +6,7 @@ import { getDBConnection } from '../dbConnector.js';
  * @returns {Promise<number>} number of employees
  */
 export async function getEmployeeCount(query) {
-  console.log('get employee count', query);
+  console.log('[DB] getEmployeeCount', query);
   const db = await getDBConnection();
 
   const sql = `

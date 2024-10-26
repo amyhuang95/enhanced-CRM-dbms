@@ -8,7 +8,7 @@ import { getDBConnection } from '../dbConnector.js';
  * @returns {Promise<Array>} an array of employee objects
  */
 export async function getEmployeeByName(query, page, pageSize) {
-  console.log('get employee by name', query);
+  console.log('[DB] getEmployeeByName', query);
   const db = await getDBConnection();
 
   const sql = `
