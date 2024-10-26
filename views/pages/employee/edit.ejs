@@ -18,7 +18,7 @@
       <%- include("../../components/formEditEmployee.ejs", { emp }) %>
 
       <% if (emp.department === 'Sales') { %>
-        <%- include("../../components/customerList.ejs", { customers }) %>
+        <%- include("../../components/employeeCustomerList.ejs", { customers }) %>
       <% } %>
 
 
