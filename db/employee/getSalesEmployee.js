@@ -11,7 +11,8 @@ export async function getSalesEmployee() {
   const sql = `
     SELECT first_name || ' ' || last_name AS name, employee_id AS id
     FROM employee
-    WHERE department LIKE 'Sales';
+    WHERE department LIKE 'Sales'
+      OR title LIKE 'Sales';
   `;
 
   try {
