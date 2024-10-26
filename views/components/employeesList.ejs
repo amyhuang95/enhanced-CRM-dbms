@@ -20,6 +20,10 @@
 
   <% } %>
 
- <%- include("./pagination.ejs", { currentPage, lastPage }) %>
+<%- include('../components/pagination', {
+  pageName: 'employees',
+  currentPage: currentPage,
+  lastPage: lastPage
+}) %>
 
 </div>

@@ -1,12 +1,12 @@
 
 <% if (lastPage > 1) { %>
-  <nav aria-label="Employees Pagination">
+  <nav aria-label="Pagination">
     <ul class="pagination">
       <li class="page-item">
-        <a class="page-link" href="<%= '/employees/?page=' + (currentPage - 1) %>">Previous</a>
+        <a class="page-link" href="<%= '/' + pageName + '/?page=' + (currentPage - 1) %>">Previous</a>
       </li>
       <li class="page-item">
-        <a class="page-link" href="<%= '/employees/?page=' + 1 %>"><%= 1 %></a>
+        <a class="page-link" href="<%= '/' + pageName + '/?page=' + 1 %>"><%= 1 %></a>
       </li>
       <li>...</li>
 
@@ -15,7 +15,7 @@
                 p <= Math.min(currentPage+3, lastPage-1);
                 p+=1) { %>
           <li class="<%= 'page-item' + ( p === currentPage ? ' active' : '') %>">
-            <a class="page-link" href="<%= '/employees/?page=' + p %>"><%= p %></a>
+            <a class="page-link" href="<%= '/' + pageName + '/?page=' + p %>"><%= p %></a>
           </li>
         <% } %>
       <% } %>
@@ -27,17 +27,24 @@
      -->
       <li>...</li>
       <li class="page-item">
-        <a class="page-link" href="<%= '/employees/?page=' + lastPage %>"
+        <a class="page-link" href="<%= '/' + pageName + '/?page=' + lastPage %>"
           ><%= lastPage %></a
         >
       </li>
       <li class="page-item">
-        <a class="page-link" href="<%= '/employees/?page=' + (currentPage + 1) %>">Next</a>
+        <a class="page-link" href="<%= '/' + pageName + '/?page=' + (currentPage + 1) %>">Next</a>
       </li>
     </ul>
   </nav>
 <% } else if (lastPage === 1) { %>
   <!-- Do not show anything if lastPage is 1 -->
+  <nav aria-label="Pagination">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="">1</a>
+      </li>
+    </ul>
+  </nav>
 <% } else { %>
-  <div>No employee found</div>
+  <div>No <%= pageName %> found</div>
 <% } %>
