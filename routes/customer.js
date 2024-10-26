@@ -15,12 +15,17 @@ router.get('/customers', async (req, res, next) => {
   try {
     const total = await db.getCustomerCount(query);
     const customers = await db.getCustomerByName(query, page, pageSize);
+    const accountManagers = await db.getSalesEmployee();
+    const parentAccounts = await db.getOtherCustomer(0);
+
     res.render('./pages/customer/index', {
       customers,
       query,
       msg,
       currentPage: page,
       lastPage: Math.ceil(total / pageSize),
+      accountManagers,
+      parentAccounts,
     });
   } catch (err) {
     next(err);

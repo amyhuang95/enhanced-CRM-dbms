@@ -9,13 +9,23 @@
   <div>
     <label class="form-label">
       Parent Entity ID:
-      <input class="form-control" type="text" name="parent_entity_id" />
+      <input class="form-control" type="text" name="parent_entity_id" list="parent_names"/>
+      <datalist id="parent_names">
+        <% parentAccounts.forEach(function(parent) { %>
+          <option value="<%= parent.customer_id %>"><%= parent.legal_entity_name %></option>
+        <% }); %>
+      </datalist>
     </label>
   </div>
   <div>
     <label class="form-label">
       Owner ID:
-      <input class="form-control" type="text" name="owner_id" />
+      <input class="form-control" type="text" name="owner_id" list="owner_names" />
+      <datalist id="owner_names">
+        <% accountManagers.forEach(function(mgr) { %>
+          <option value="<%= mgr.id %>"><%= mgr.name %></option>
+        <% }); %>
+      </datalist>
     </label>
   </div>
   <div>

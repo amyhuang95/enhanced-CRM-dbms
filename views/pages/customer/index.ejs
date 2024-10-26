@@ -22,7 +22,7 @@
           <%- include("../../components/customersList.ejs", { customers, currentPage, lastPage }) %>
         </div>
         <div class="col-4">
-          <%- include("../../components/formAddCustomer.ejs") %>
+          <%- include("../../components/formAddCustomer.ejs", {accountManagers, parentAccounts}) %>
         </div>
       </div>
 
