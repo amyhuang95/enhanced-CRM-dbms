@@ -85,7 +85,7 @@ VALUES
 (6, 3, 1, 1, 'Cloud Migration Project', '2023-01-15', '2023-06-01', 250000.00);
 
 -- Add data to Quote table
-INSERT INTO Quote (quote_id, opportunity_id, bill_to_id, ship_to_id, name, content, status, created_date, approved_date)
+INSERT INTO Quote (quote_id, opportunity_id, bill_to_id, ship_to_id, name, content, status, date_created, date_approved)
 VALUES
 (1, 1, 1, 3, 'Cloud Migration Quote', 'Details on cloud services', 'Approved', '2023-02-01', '2023-02-10'),
 (2, 2, 1, 3, 'AI Healthcare Quote', 'AI Integration for Healthcare Systems', 'Approved', '2023-03-01', '2023-03-10'),
@@ -93,6 +93,6 @@ VALUES
 (4, 4, 4, 5, 'Automotive ODM Quote', 'Design for Automotive ODM', 'Pending Review', '2023-10-01', NULL),
 (5, 5, 4, 5, 'AI Partnership Quote', 'Partnership for AI Solutions', 'Draft', '2024-02-01', NULL);
 
-INSERT INTO Quote (quote_id, opportunity_id, bill_to_id, ship_to_id, name, content, approved_date)
+INSERT INTO Quote (quote_id, opportunity_id, bill_to_id, ship_to_id, name, content, date_approved)
 VALUES
 (6, 1, 1, 3, 'Cloud Migration Quote', 'Details on cloud services', NULL);

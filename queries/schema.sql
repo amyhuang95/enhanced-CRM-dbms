@@ -90,8 +90,8 @@ CREATE TABLE Quote (
     name TEXT NOT NULL,
     content TEXT,
     status TEXT CHECK(status IN ('Draft', 'Pending Review', 'Approved', 'Rejected', 'Canceled')) DEFAULT 'Draft',
-    created_date DATE DEFAULT CURRENT_DATE,
-    approved_date DATE,
+    date_created DATE DEFAULT CURRENT_DATE,
+    date_approved DATE,
     FOREIGN KEY (opportunity_id) REFERENCES Opportunity(opportunity_id),
     FOREIGN KEY (bill_to_id) REFERENCES Customer(customer_id),
     FOREIGN KEY (ship_to_id) REFERENCES Customer(customer_id)
