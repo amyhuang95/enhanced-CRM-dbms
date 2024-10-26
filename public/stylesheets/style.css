@@ -12,6 +12,10 @@ body {
   opacity:  100;
 }
 
+h2, h3 {
+  margin-top: 20px;
+}
+
 /* Grid form for employee form */
 .form-grid {
   display: grid;
