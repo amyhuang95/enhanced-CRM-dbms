@@ -7,7 +7,7 @@ import { getDBConnection } from '../dbConnector.js';
  * @returns {Promise<Object>} updated employee object
  */
 export async function updateEmployeeById(employee_id, employee) {
-  console.log('update employee by id', employee_id, employee);
+  console.log('[DB] updateEmployeeById', employee_id, employee);
 
   const db = await getDBConnection();
 
