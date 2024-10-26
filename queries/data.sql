@@ -1,7 +1,7 @@
 -- Add data to Employee table
 INSERT INTO Employee (employee_id, first_name, last_name, phone, email, title, department, business_unit, hired_date, status)
 VALUES 
-(0, 'Placeholder', 'Employee', '000-0000', 'placeholder@company.com', '', 'Sales', 'Functional', '1999-01-01', 'Inactive'), 
+(0, 'Placeholder', 'Employee', '000-0000', 'placeholder@company.com', 'NA', 'Sales', 'Functional', '1999-01-01', 'Inactive'), 
 (1, 'Alice', 'Smith', '555-1234', 'alice.smith@company.com', 'Sales Manager', 'Sales', 'Cloud', '2021-05-10', 'Active'),
 (2, 'Bob', 'Johnson', '555-2345', 'bob.johnson@company.com', 'Sales Director', 'Sales', 'AI', '2022-01-20', 'Active'),
 (3, 'Charlie', 'Davis', '555-3456', 'charlie.davis@company.com', 'Sanction Analyst', 'Compliance', 'Automobile', '2020-09-15', 'Active'),

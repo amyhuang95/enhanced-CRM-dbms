@@ -19,6 +19,9 @@
       <label class="form-label">
         Account Manager:
         <select class="form-control" name="owner_id">
+            <% if (customer.owner_id === 0) { %>
+            <option value="0" selected disabled>Placeholder Employee</option>
+            <% } %>
           <% accountManagers.forEach(function(mgr) { %>
           <option value="<%= mgr.id %>" <%= customer.owner_id === mgr.id ? 'selected' : '' %>><%= mgr.name %></option>
           <% }); %>
