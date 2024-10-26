@@ -12,7 +12,7 @@
       <select class="form-control" name="parent_entity_id">
         <option value="" disabled selected>Select</option>
         <% parentAccounts.forEach(function(parent) { %>
-        <option value="<%= parent.customer_id %>" %>><%= parent.legal_entity_name %></option>
+        <option value="<%= parent.company_id %>" %>><%= parent.legal_entity_name %></option>
         <% }); %>
       </select>
       </label>

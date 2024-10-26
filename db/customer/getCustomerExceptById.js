@@ -11,7 +11,7 @@ export async function getCustomerExceptById(customer_id) {
   const db = await getDBConnection();
 
   const sql = `
-    SELECT customer_id, legal_entity_name
+    SELECT customer_id AS company_id, legal_entity_name
     FROM customer
     WHERE customer_id != @customer_id;
   `;
