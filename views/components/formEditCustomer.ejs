@@ -17,11 +17,10 @@
 
     <div>
       <label class="form-label">
-        Account Manager (ID):
+        Account Manager:
         <select class="form-control" name="owner_id">
-          <option value="customer.owner_id"><%= customer.owner_name %></option>
           <% accountManagers.forEach(function(mgr) { %>
-            <option value="<%= mgr.id %>"><%= mgr.name %></option>
+          <option value="<%= mgr.id %>" <%= customer.owner_id === mgr.id ? 'selected' : '' %>><%= mgr.name %></option>
           <% }); %>
         </select>
       </label>
@@ -29,11 +28,11 @@
 
     <div>
       <label class="form-label">
-      Parent Account (ID):
+      Parent Account:
       <select class="form-control" name="parent_entity_id">
         <option value="" <%= !customer.parent_entity_id ? 'selected' : '' %>></option>
         <% parentAccounts.forEach(function(parent) { %>
-        <option value="<%= parent.customer_id %>" <%= customer.parent_entity_id === parent.customer_id ? 'selected' : '' %>><%= parent.legal_entity_name %></option>
+        <option value="<%= parent.company_id %>" <%= customer.parent_entity_id === parent.company_id ? 'selected' : '' %>><%= parent.legal_entity_name %></option>
         <% }); %>
       </select>
       </label>
