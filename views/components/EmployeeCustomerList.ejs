@@ -3,7 +3,7 @@
 <ul>
   <% for (let c of customers) { %>
   <li>
-    <a href="<%= '/customers/' + c.customer_id + '/edit'  %>"><%= c.legal_entity_name %></a>
+    <a href="<%= '/customers/' + c.customer_id + '/edit'  %>"><%= c.legal_entity_name %></a> - <%= c.status %>
   </li>
   <% } %>
 </ul>
