@@ -6,9 +6,8 @@
       <div class="card p-1">
         <h5 class="card-title"><%= cust.legal_entity_name %></h5>
         <div class="card-text">
+          <div><%= cust.type %> / <%= cust.industry %></div>
           <div>Created on: <%= cust.date_created %></div>
-          <div>Industry: <%= cust.industry %></div>
-
           <div>
             <a class="btn btn-outline-primary" href="<%= '/customers/' + cust.customer_id + '/edit' %>">Edit</a>
             <a class="btn btn-outline-danger" href="<%= '/customers/' + cust.customer_id + '/delete' %>">Delete</a>
