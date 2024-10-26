@@ -1,6 +1,6 @@
-<h3>Update Account Manager</h3>
+<h3>Update Parent Account</h3>
 <form
-  action="<%= '/customers/' + customer.customer_id + '/updateOwner' %>"
+  action="<%= '/customers/' + customer.customer_id + '/updateParent' %>"
   method="POST"
   class="update-form"
 >
@@ -16,16 +16,16 @@
 
   <div class="form-group">
     <label class="form-label">
-      Account Manager (ID):
+      Parent Account (ID):
       <input
         class="form-control"
         type="text"
-        name="owner_id"
-        list="owner_names"
+        name="parent_entity_id"
+        list="parent_names"
       />
-      <datalist id="owner_names">
-        <% accountManagers.forEach(function(mgr) { %>
-          <option value="<%= mgr.id %>"><%= mgr.name %></option>
+      <datalist id="parent_names">
+        <% parentAccounts.forEach(function(parent) { %>
+          <option value="<%= parent.customer_id %>"><%= parent.legal_entity_name %></option>
         <% }); %>
       </datalist>
     </label>

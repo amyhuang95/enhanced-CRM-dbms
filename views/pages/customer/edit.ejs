@@ -16,7 +16,16 @@
       <% } %>
 
       <%- include("../../components/formEditCustomer.ejs", { customer }) %>
-      <%- include("../../components/formUpdateOwner.ejs", { customer, accountManagers }) %>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <%- include("../../components/formUpdateOwner.ejs", { customer, accountManagers }) %>
+        </div>
+        <div class="col-md-6">
+          <%- include("../../components/formUpdateParent.ejs", { customer, parentAccounts }) %>
+        </div>
+      </div>
 
      <!-- To add oppty records -->
 

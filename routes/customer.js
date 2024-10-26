@@ -36,6 +36,7 @@ router.get('/customers/:customer_id/edit', async (req, res, next) => {
   try {
     const customer = await db.getCustomerById(customer_id);
     const accountManagers = await db.getSalesEmployee();
+    const parentAccounts = await db.getOtherCustomer(customer_id);
     // let customers = await db.getCustomerByOwnerId(employee_id); // get all opptys for this customer
 
     console.log('customer ', {
@@ -47,6 +48,7 @@ router.get('/customers/:customer_id/edit', async (req, res, next) => {
     res.render('./pages/customer/edit', {
       customer,
       accountManagers,
+      parentAccounts,
       // opptys,
       msg,
     });
@@ -108,6 +110,32 @@ router.post('/customers/:customer_id/updateOwner', async (req, res, next) => {
       res.redirect(`/customers/${customer_id}/edit?msg=Owner Updated`);
     } else {
       res.redirect(`/customers/${customer_id}/edit?msg=Error Updating Owner`);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * POST request to update parent entity id for a customer
+ */
+router.post('/customers/:customer_id/updateParent', async (req, res, next) => {
+  const customer_id = req.params.customer_id;
+  const parent_entity_id = req.body.parent_entity_id;
+
+  try {
+    const updateResult = await db.updateParentById(
+      customer_id,
+      parent_entity_id
+    );
+    console.log('update', updateResult);
+
+    if (updateResult && updateResult.changes === 1) {
+      res.redirect(`/customers/${customer_id}/edit?msg=Parent Entity Updated`);
+    } else {
+      res.redirect(
+        `/customers/${customer_id}/edit?msg=Error Updating Parent Entity`
+      );
     }
   } catch (err) {
     next(err);
