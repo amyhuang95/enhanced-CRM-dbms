@@ -63,7 +63,7 @@ router.post('/addEmployee', async (req, res, next) => {
     const addEmp = await db.addEmployee(emp);
 
     console.log('Added', addEmp);
-    res.redirect('/employees/?msg=Employee Added');
+    res.redirect(`/employees/?msg=Added ${emp.first_name} ${emp.last_name}`);
   } catch (err) {
     console.log('Error adding employee', err);
     next(err);
@@ -83,7 +83,9 @@ router.post('/employees/:employee_id/edit', async (req, res, next) => {
     console.log('update', updateResult);
 
     if (updateResult && updateResult.changes === 1) {
-      res.redirect('/employees/?msg=Updated');
+      res.redirect(
+        `/employees/?msg=Updated ${emp.first_name} ${emp.last_name}`
+      );
     } else {
       res.redirect('/employees/?msg=Error Updating');
     }
@@ -113,7 +115,7 @@ router.get('/employees/:employee_id/delete', async (req, res, next) => {
     console.log('delete', deleteResult);
 
     if (deleteResult && deleteResult.changes === 1) {
-      res.redirect('/employees/?msg=Deleted');
+      res.redirect(`/employees/?msg=Deleted employee ID ${employee_id}`);
     } else {
       res.redirect('/employees/?msg=Error Deleting');
     }
