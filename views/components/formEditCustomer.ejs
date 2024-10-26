@@ -17,30 +17,27 @@
 
     <div>
       <label class="form-label">
-      Account Manager:
-      <input
-        class="form-control"
-        type="text"
-        name="owner_name"
-        value="<%= customer.owner_name %>"
-        disabled
-      />
+        Account Manager (ID):
+        <select class="form-control" name="owner_id">
+          <option value="customer.owner_id"><%= customer.owner_name %></option>
+          <% accountManagers.forEach(function(mgr) { %>
+            <option value="<%= mgr.id %>"><%= mgr.name %></option>
+          <% }); %>
+        </select>
       </label>
     </div>
 
     <div>
       <label class="form-label">
-        Parent Company:
-        <input
-          class="form-control"
-          type="text"
-          name="parent_entity_name"
-          value="<%= customer.parent_entity_name %>"
-          disabled
-        />
+      Parent Account (ID):
+      <select class="form-control" name="parent_entity_id">
+        <option value="" <%= !customer.parent_entity_id ? 'selected' : '' %>></option>
+        <% parentAccounts.forEach(function(parent) { %>
+        <option value="<%= parent.customer_id %>" <%= customer.parent_entity_id === parent.customer_id ? 'selected' : '' %>><%= parent.legal_entity_name %></option>
+        <% }); %>
+      </select>
       </label>
     </div>
-
 
     <div>
       <label class="form-label">

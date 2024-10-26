@@ -16,7 +16,7 @@ router.get('/customers', async (req, res, next) => {
     const total = await db.getCustomerCount(query);
     const customers = await db.getCustomerByName(query, page, pageSize);
     const accountManagers = await db.getSalesEmployee();
-    const parentAccounts = await db.getOtherCustomer(0);
+    const parentAccounts = await db.getCustomerExceptById(0);
 
     res.render('./pages/customer/index', {
       customers,
@@ -41,7 +41,7 @@ router.get('/customers/:customer_id/edit', async (req, res, next) => {
   try {
     const customer = await db.getCustomerById(customer_id);
     const accountManagers = await db.getSalesEmployee();
-    const parentAccounts = await db.getOtherCustomer(customer_id);
+    const parentAccounts = await db.getCustomerExceptById(customer_id);
     // let customers = await db.getCustomerByOwnerId(employee_id); // get all opptys for this customer
 
     console.log('customer ', {

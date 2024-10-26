@@ -13,6 +13,4 @@ export * from './customer/addCustomer.js';
 export * from './customer/updateCustomerById.js';
 export * from './customer/deleteCustomerById.js';
 export * from './customer/getCustomerByName.js';
-export * from './customer/updateOwnerById.js';
-export * from './customer/updateParentById.js';
-export * from './customer/getOtherCustomer.js';
+export * from './customer/getCustomerExceptById.js';

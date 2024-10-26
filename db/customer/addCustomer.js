@@ -6,7 +6,7 @@ import { getDBConnection } from '../dbConnector.js';
  * @returns {Promise<Object>} the result of the insert operation
  */
 export async function addCustomer(customer) {
-  console.log('add customer', customer);
+  console.log('[DB] addCustomer', customer);
   const db = await getDBConnection();
 
   const sql = `
