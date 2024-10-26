@@ -18,19 +18,6 @@ Entity Relation Diagram
 
 Refers to the database schema in the [schema.pdf](docs/schema.pdf) file.
 
-<!-- ## How to run it
-
-- Requires installation of node, express, [database name]
-
-```
-npm install
-npm start
-```
-
-## How to use it
-
-Go to http://localhost:3000 and [do something] -->
-
 ## Database
 
 This project uses SQLite as the database. To use the database, clone this repository, navigate to the queries directory, and run the following commands in the terminal:
@@ -56,6 +43,24 @@ This project uses SQLite as the database. To use the database, clone this reposi
 4. To confirm that the tables were created and conform to the constraints, refer to the [ddl_outputs.pdf](docs/ddl_outputs.pdf) file.
 
 5. To view example outputs of the queries, refer to the [dml_outputs.pdf](docs/dml_outputs.pdf) file.
+
+## Web Application
+
+The web application implements the Employee and Customer tables. It is built using Node.js and Express.js. To run the web application, clone this repository, navigate to the webapp directory, and run the following commands in the terminal:
+
+1. Install the required packages:
+
+   ```bash
+   npm install
+   ```
+
+2. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+3. Go to http://localhost:3000 in your browser to view the web application.
 
 ---
 
