@@ -98,8 +98,18 @@ router.post('/employees/:employee_id/edit', async (req, res, next) => {
 router.get('/employees/:employee_id/delete', async (req, res, next) => {
   const employee_id = req.params.employee_id;
 
+  // If the emplyee manages customers, update the owner_id to 0 for all its customers
+  const customers = await db.getCustomerByOwnerId(employee_id);
+  if (customers.length !== 0) {
+    for (let customer of customers) {
+      await db.updateOwnerById(customer.customer_id, 0);
+      console.log('Updated owner_id to 0 for customers:', customer.customer_id);
+    }
+  }
+
+  // Delete the employee
   try {
-    let deleteResult = await db.deleteEmployeeById(employee_id);
+    const deleteResult = await db.deleteEmployeeById(employee_id);
     console.log('delete', deleteResult);
 
     if (deleteResult && deleteResult.changes === 1) {
