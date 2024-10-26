@@ -4,7 +4,7 @@ import { open } from 'sqlite';
 // Helper function to connect to the database
 export async function getDBConnection() {
   return open({
-    filename: './db/database.db',
+    filename: './queries/database.db',
     driver: sqlite3.Database,
   });
 }
