@@ -30,5 +30,3 @@ export async function getCustomerCount(query) {
     await db.close();
   }
 }
-
-export default getCustomerCount;

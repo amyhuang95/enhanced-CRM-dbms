@@ -31,5 +31,3 @@ export async function getEmployeeById(employee_id) {
     await db.close();
   }
 }
-
-export default getEmployeeById;

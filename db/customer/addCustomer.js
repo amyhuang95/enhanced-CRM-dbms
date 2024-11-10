@@ -35,5 +35,3 @@ export async function addCustomer(customer) {
     db.close();
   }
 }
-
-export default addCustomer;

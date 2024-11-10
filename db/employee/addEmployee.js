@@ -36,5 +36,3 @@ export async function addEmployee(emp) {
     db.close();
   }
 }
-
-export default addEmployee;

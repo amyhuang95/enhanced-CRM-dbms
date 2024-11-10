@@ -53,5 +53,3 @@ export async function updateCustomerById(customer_id, customer) {
     db.close();
   }
 }
-
-export default updateCustomerById;

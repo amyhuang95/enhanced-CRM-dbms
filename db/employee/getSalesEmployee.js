@@ -28,5 +28,3 @@ export async function getSalesEmployee() {
     await db.close();
   }
 }
-
-export default getSalesEmployee;

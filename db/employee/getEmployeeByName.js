@@ -39,5 +39,3 @@ export async function getEmployeeByName(query, page, pageSize) {
     await db.close();
   }
 }
-
-export default getEmployeeByName;

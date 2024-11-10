@@ -32,5 +32,3 @@ export async function getCustomerExceptById(customer_id) {
     await db.close();
   }
 }
-
-export default getCustomerExceptById;

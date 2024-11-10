@@ -35,5 +35,3 @@ export async function getCustomerById(customer_id) {
     await db.close();
   }
 }
-
-export default getCustomerById;

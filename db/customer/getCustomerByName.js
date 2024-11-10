@@ -38,5 +38,3 @@ export async function getCustomerByName(query, page, pageSize) {
     await db.close();
   }
 }
-
-export default getCustomerByName;

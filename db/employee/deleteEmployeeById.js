@@ -30,5 +30,3 @@ export async function deleteEmployeeById(employee_id) {
     db.close();
   }
 }
-
-export default deleteEmployeeById;

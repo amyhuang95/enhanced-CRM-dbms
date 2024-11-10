@@ -31,5 +31,3 @@ export async function getEmployeeCount(query) {
     await db.close();
   }
 }
-
-export default getEmployeeCount;
